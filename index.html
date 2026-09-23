@@ -132,6 +132,16 @@ section.s{padding-block:clamp(56px,9vw,104px) 0;scroll-margin-top:60px}
 .algos li{list-style:none;border-bottom:1px solid var(--rule);padding:8px 0;font-size:.95rem;display:flex;gap:10px;align-items:baseline}
 .algos li::before{counter-increment:a;content:counter(a,decimal-leading-zero);font-family:var(--mono);font-size:.72rem;color:var(--muted)}
 .algos li.win{color:var(--chinar-deep)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.qg textarea{display:block;width:100%;min-height:10.5em;resize:vertical;font:400 .92rem/1.55 var(--sans);color:var(--ink);background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:10px 12px}
+.qgout{margin-top:12px;font-size:.92rem}
+.qgout .v{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+.qgout .v b{font-weight:500;border-radius:99px;padding:2px 10px}
+.qgout .v b.pass{background:color-mix(in srgb,var(--calm) 18%,transparent);color:var(--calm)}
+.qgout .v b.review{background:color-mix(in srgb,var(--crit) 16%,transparent);color:var(--crit)}
+.qgout ul{margin:8px 0 0;padding-left:1.1em}
+.qgout li{margin-top:3px}
+.qghint{margin-top:10px;font-size:.84rem;color:var(--muted)}
 
 /* ---------- journey ---------- */
 .route{position:relative;background:var(--card);border:1px solid var(--rule);border-radius:22px;padding:clamp(20px,3.4vw,40px);overflow:hidden}
@@ -240,7 +250,7 @@ html.presenting .snap{scroll-snap-align:start;min-height:calc(100svh - 60px);dis
     </section>
 
     <div class="glance tnum" role="list" aria-label="At a glance">
-      <div role="listitem"><b>~85</b><span>REST endpoints in StockBox</span></div>
+      <div role="listitem"><b>~85</b><span>REST endpoints in HisaabBox</span></div>
       <div role="listitem"><b>41</b><span>automated backend tests</span></div>
       <div role="listitem"><b>7</b><span>ML algorithms compared</span></div>
       <div role="listitem"><b>9.80</b><span>Class 10 CGPA</span></div>
@@ -248,12 +258,12 @@ html.presenting .snap{scroll-snap-align:start;min-height:calc(100svh - 60px);dis
 
     <!-- ===================== WORK ===================== -->
     <section class="s" id="work" aria-labelledby="work-h">
-      <div class="shead"><h2 id="work-h">Selected work</h2><span class="eyebrow">Both live — try them</span></div>
+      <div class="shead"><h2 id="work-h">Selected work</h2><span class="eyebrow">Three projects — try each one</span></div>
 
       <article class="proj snap">
         <div>
           <div class="kick"><span class="eyebrow">Full-stack · personal project</span><span class="eyebrow">Jun 2026 — now</span></div>
-          <h3>StockBox</h3>
+          <h3>HisaabBox</h3>
           <p class="sum">Inventory, point-of-sale and a banking-style credit ledger (Khata) for small Indian businesses — designed, built and deployed solo.</p>
           <div class="nums tnum">
             <div><b>~85</b><span>endpoints</span></div>
@@ -286,6 +296,42 @@ html.presenting .snap{scroll-snap-align:start;min-height:calc(100svh - 60px);dis
               </div>
               <div class="bill tnum" aria-live="polite" id="bill"></div>
             </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj snap">
+        <div>
+          <div class="kick"><span class="eyebrow">Generative AI · RAG · personal project</span><span class="eyebrow">Sep 2026</span></div>
+          <h3>CatalogCraft AI</h3>
+          <p class="sum">Upload a product catalog and get an on-brand, SEO-friendly description for every product — written by Llama running locally, grounded in brand guidelines through RAG, and checked by a Quality Guard before a person signs off.</p>
+          <div class="nums tnum">
+            <div><b>150/150</b><span>generated, 0 failed</span></div>
+            <div><b>~10 s</b><span>per product</span></div>
+            <div><b>21</b><span>RAG guideline docs</span></div>
+            <div><b>165</b><span>tests</span></div>
+          </div>
+          <ul class="chips"><li>Python</li><li>LangChain</li><li>Ollama</li><li>Llama 3.2</li><li>ChromaDB</li><li>RAG</li><li>Streamlit</li><li>Pandas</li></ul>
+          <div class="plinks">
+            <a class="btn solid" href="https://github.com/ibrahimwani/CatalogCraftAI" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>View on GitHub</a>
+            <a class="btn ghost" href="https://github.com/ibrahimwani/CatalogCraftAI/blob/main/docs/e2e-results.md" target="_blank" rel="noopener">150-product results <svg><use href="#i-ext"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <ul class="feat">
+            <li><b>RAG on writing rules</b><span>Brand, category and SEO guidelines retrieved from ChromaDB. The catalog is never embedded, so facts can't leak between products.</span></li>
+            <li><b>100% local, zero API cost</b><span>Llama 3.2 3B through Ollama and LangChain. Nothing leaves the machine.</span></li>
+            <li><b>Rule-based Quality Guard</b><span>Checks attribute and SEO coverage, length, unsupported claims and colour/material contradictions.</span></li>
+            <li><b>Human in the loop</b><span>Review, edit or regenerate any flagged description; edits survive the CSV export.</span></li>
+            <li><b>Tuned category fallback</b><span>Unknown categories borrow a guideline only when truly similar: "Sports Shoes" uses Footwear, "Medicine" gets none.</span></li>
+            <li><b>Fails soft</b><span>Retries transient errors, never stops a batch on one bad product, and has a Mock mode that runs without a model.</span></li>
+          </ul>
+          <div class="try qg">
+            <div class="eyebrow"><span>Try it · Quality Guard</span><span>olive leather shoes</span></div>
+            <label for="qgText" class="sr">Generated description</label>
+            <textarea id="qgText" spellcheck="false">The Norwalk Urban Running Shoes are designed for everyday essentials, combining classic lines with modern comfort. Crafted from high-quality leather in a rich olive hue, these shoes feature a lightweight construction and shock-absorbing sole for a comfortable ride. The padded ankle collar and moisture-wicking lining ensure a breathable fit, while the lace-up closure provides a secure fit. Perfect for running errands or tackling daily tasks, these shoes are designed to keep up with your active lifestyle, delivering classic lines, modern comfort.</textarea>
+            <div class="qgout" id="qgOut" aria-live="polite"></div>
+            <p class="qghint">A real Llama output. Try adding "waterproof", or change "olive" to "brown".</p>
           </div>
         </div>
       </article>
@@ -334,7 +380,7 @@ html.presenting .snap{scroll-snap-align:start;min-height:calc(100svh - 60px);dis
           <div class="stop"><div class="when">Class 10</div><b>A 9.80 start</b><span>Secondary school, CGPA 9.80.</span></div>
           <div class="stop"><div class="when">2022 — 2025</div><b>Diploma, Computer Engineering</b><span>Kashmir Government Polytechnic College · CGPA 9.17.</span></div>
           <div class="stop"><div class="when">2025</div><b>First ML product</b><span>Disease risk predictor, live on Streamlit.</span></div>
-          <div class="stop"><div class="when">2025 — now</div><b>B.E. CSE at SIT, Tumkur</b><span>CGPA 8.98 · shipping StockBox alongside.</span></div>
+          <div class="stop"><div class="when">2025 — now</div><b>B.E. CSE at SIT, Tumkur</b><span>CGPA 8.98 · shipping HisaabBox alongside.</span></div>
         </div>
       </div>
     </section>
@@ -408,7 +454,7 @@ const LINKS = {
 
   document.getElementById('heroLinks').innerHTML =
     `<a class="btn solid" href="#contact">${ic('i-mail')}Get in touch</a>`
-    + `<a class="btn ghost" href="https://hisaabbox.dev" target="_blank" rel="noopener">${ic('i-ext')}See StockBox live</a>`
+    + `<a class="btn ghost" href="https://hisaabbox.dev" target="_blank" rel="noopener">${ic('i-ext')}See HisaabBox live</a>`
     + [[LINKS.github,'i-gh','GitHub'],[LINKS.linkedin,'i-in','LinkedIn'],[LINKS.leetcode,'i-lc','LeetCode']]
         .filter(([h]) => h).map(([h,i,l]) => link(h, i, l, 'ghost')).join('');
   document.getElementById('contactLinks').innerHTML =
@@ -459,6 +505,51 @@ const LINKS = {
   bands.addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) setBand(+b.dataset.i); });
   bands.addEventListener('pointerover', (e) => { const b = e.target.closest('button'); if (b) setBand(+b.dataset.i); });
   setBand(2);
+
+  // ---- quality guard: claims, contradictions, length (from quality_guard.py)
+  const CLAIMS = {
+    'waterproof': /\bwater[\s-]?proof\b/, 'certified': /\bcertif(?:ied|ication|icate)s?\b/,
+    'guaranteed': /\bguarantee[sd]?\b/, 'clinically proven': /\bclinically[\s-]+(?:proven|tested)\b/,
+    'lifetime warranty': /\blifetime\s+warrant(?:y|ies)\b/, 'warranty': /\bwarrant(?:y|ies)\b/,
+    'hypoallergenic': /\bhypo[\s-]?allergenic\b/, 'eco-friendly': /\beco[\s-]?friendly\b/,
+    'sustainable': /\bsustainabl[ey]\b|\bsustainably\b/, 'organic': /\borganic\b/,
+    'best-in-class / number one': /\bbest[\s-]in[\s-]class\b|\bnumber\s+one\b/,
+    'award-winning': /\baward[\s-]winning\b/, 'unbreakable': /\bunbreakable\b|\bindestructible\b/,
+    'scratch-proof': /\bscratch[\s-]?proof\b/, '100%': /\b100\s?%/,
+  };
+  // The demo product is olive leather; any other colour or material contradicts it.
+  const TERMS = [
+    ['color', 'Olive', ['olive'], 'navy blue rose_gold sage_green space_grey black white navy grey gray red olive tan charcoal beige maroon blue silver gold brown burgundy terracotta green graphite pink purple yellow orange ivory cream'],
+    ['material', 'Leather', ['leather', 'synthetic leather'], 'genuine_leather synthetic_leather faux_leather stainless_steel solid_wood leather mesh canvas suede knit cotton linen polyester wool denim fleece nylon silk velvet bamboo plastic aluminum aluminium polycarbonate silicone titanium steel ceramic glass wood wooden rattan rubber cashmere'],
+  ];
+  const PAIRING = /\b(?:pair(?:s|ed|ing)?|team(?:s|ed|ing)?|styl(?:e|ed|ing)|wear(?:ing)?|layer(?:s|ed|ing)?|match(?:es|ed|ing)?|combin(?:e|es|ed|ing))\s+(?:it|them|this|these|with|under|over)\b|\bgoes\s+(?:well\s+)?with\b/i;
+  const qgText = document.getElementById('qgText'), qgOut = document.getElementById('qgOut');
+  function renderGuard() {
+    const text = qgText.value, lower = text.toLowerCase(), issues = [];
+    const words = text.split(/\s+/).filter(Boolean).length;
+    if (!text.trim()) issues.push('Description is empty.');
+    const claims = Object.keys(CLAIMS).filter((k) => CLAIMS[k].test(lower));
+    if (claims.includes('lifetime warranty')) claims.splice(claims.indexOf('warranty'), claims.includes('warranty') ? 1 : 0);
+    if (claims.length) issues.push(`Unsupported claim: ${claims.join(', ')} (the product data never says so).`);
+    // skip styling sentences ("pair it with a white shirt"): they describe other items
+    let rest = ' ' + text.split(/(?<=[.!?])\s+|\n+/).filter((s) => !PAIRING.test(s)).join(' ')
+      .toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9%#]+/g, ' ') + ' ';
+    for (const [attr, expected, ok, list] of TERMS) {
+      const terms = list.split(' ').map((t) => t.replace('_', ' ')).sort((a, b) => b.length - a.length);
+      for (const t of terms) {
+        const re = new RegExp(`\\b${t}\\b`, 'g');
+        if (!re.test(rest)) continue;
+        rest = rest.replace(re, ' ');
+        if (!ok.includes(t)) issues.push(`Mentions ${attr} "${t}" but the product ${attr} is "${expected}".`);
+      }
+    }
+    if (text.trim() && (words < 72 || words > 143)) issues.push(`Length ${words} words is too ${words < 72 ? 'short' : 'long'} for 80–130 words (Medium).`);
+    const pass = !issues.length;
+    qgOut.innerHTML = `<div class="v"><b class="${pass ? 'pass' : 'review'}">${pass ? 'PASS' : 'REVIEW'}</b><span>${words} words · target 80–130</span></div>`
+      + (pass ? '' : `<ul>${issues.map((i) => `<li>${i}</li>`).join('')}</ul>`);
+  }
+  qgText.addEventListener('input', renderGuard);
+  renderGuard();
 
   // ---- copy email ---------------------------------------------------
   const copy = document.getElementById('copy'), email = document.getElementById('email');
