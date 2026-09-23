@@ -90,6 +90,7 @@ section.s{padding-block:clamp(56px,9vw,104px) 0;scroll-margin-top:60px}
 .proj+.proj{margin-top:22px}
 @media (max-width:860px){.proj{grid-template-columns:minmax(0,1fr)}}
 .proj h3{font-size:clamp(2rem,4vw,2.8rem);line-height:1.02}
+.role{font-family:var(--mono);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--chinar-deep);margin-top:8px}
 .proj .kick{display:flex;justify-content:space-between;gap:10px;margin-bottom:14px}
 .proj p.sum{margin-top:14px;font-size:1.05rem}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
@@ -142,6 +143,14 @@ section.s{padding-block:clamp(56px,9vw,104px) 0;scroll-margin-top:60px}
 .qgout ul{margin:8px 0 0;padding-left:1.1em}
 .qgout li{margin-top:3px}
 .qghint{margin-top:10px;font-size:.84rem;color:var(--muted)}
+.stat{margin:0;padding:0}
+.stat li{list-style:none;display:flex;gap:10px;align-items:baseline;padding:6px 0}
+.stat li+li{border-top:1px solid var(--rule)}
+.stat b{flex:0 0 auto;min-width:6.5em;font-size:.78rem;font-family:var(--mono);border-radius:99px;padding:2px 10px;text-align:center}
+.stat li.ok b{background:color-mix(in srgb,var(--calm) 18%,transparent);color:var(--calm)}
+.stat li.todo b{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}
+.stat span{font-size:.9rem;color:var(--muted)}
+.stat code{font-family:var(--mono);font-size:.85em;background:var(--card);border:1px solid var(--rule);border-radius:4px;padding:0 4px}
 
 /* ---------- journey ---------- */
 .route{position:relative;background:var(--card);border:1px solid var(--rule);border-radius:22px;padding:clamp(20px,3.4vw,40px);overflow:hidden}
@@ -258,7 +267,7 @@ html.presenting .snap{scroll-snap-align:start;min-height:calc(100svh - 60px);dis
 
     <!-- ===================== WORK ===================== -->
     <section class="s" id="work" aria-labelledby="work-h">
-      <div class="shead"><h2 id="work-h">Selected work</h2><span class="eyebrow">Three projects — try each one</span></div>
+      <div class="shead"><h2 id="work-h">Selected work</h2><span class="eyebrow">Five projects — two still in progress</span></div>
 
       <article class="proj snap">
         <div>
@@ -332,6 +341,79 @@ html.presenting .snap{scroll-snap-align:start;min-height:calc(100svh - 60px);dis
             <textarea id="qgText" spellcheck="false">The Norwalk Urban Running Shoes are designed for everyday essentials, combining classic lines with modern comfort. Crafted from high-quality leather in a rich olive hue, these shoes feature a lightweight construction and shock-absorbing sole for a comfortable ride. The padded ankle collar and moisture-wicking lining ensure a breathable fit, while the lace-up closure provides a secure fit. Perfect for running errands or tackling daily tasks, these shoes are designed to keep up with your active lifestyle, delivering classic lines, modern comfort.</textarea>
             <div class="qgout" id="qgOut" aria-live="polite"></div>
             <p class="qghint">A real Llama output. Try adding "waterproof", or change "olive" to "brown".</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj snap">
+        <div>
+          <div class="kick"><span class="eyebrow">Full-stack · AI · college project</span><span class="eyebrow">Dec 2025 — Mar 2026 · work in progress</span></div>
+          <h3>Pragati</h3>
+          <p class="sum">A career re-entry platform for women returning to work after a career break: an AI skill-gap assessment, generated learning paths and quizzes, mentor matching, a job board and a community forum. Still being built — the backend and AI assessment work, but it isn't deployed yet.</p>
+          <div class="nums tnum">
+            <div><b>29</b><span>routes</span></div>
+            <div><b>9</b><span>data models</span></div>
+            <div><b>22</b><span>templates</span></div>
+            <div><b>5</b><span>blueprints</span></div>
+          </div>
+          <ul class="chips"><li>Python</li><li>Flask</li><li>MongoDB</li><li>MongoEngine</li><li>Gemini AI</li><li>Scikit-learn</li><li>Flask-Login</li></ul>
+          <div class="plinks">
+            <a class="btn solid" href="https://github.com/ibrahimwani/pragati-platform" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>View on GitHub</a>
+          </div>
+        </div>
+        <div>
+          <ul class="feat">
+            <li><b>AI skill-gap assessment</b><span>Gemini scores technical and soft skills against the user's target role and suggests a timeline to close the gap.</span></li>
+            <li><b>Generated learning paths &amp; quizzes</b><span>Course recommendations and quizzes are generated per-user, not a fixed catalog.</span></li>
+            <li><b>TF-IDF job matching</b><span>Scikit-learn's TF-IDF and cosine similarity rank job listings against a user's skills.</span></li>
+            <li><b>Mentor matching &amp; verification</b><span>Become-mentor flow with a verification token, connection requests and sessions.</span></li>
+            <li><b>Job board</b><span>Listings, saved jobs, applications and status tracking.</span></li>
+            <li><b>Migrating SQLite → MongoDB</b><span>Models exist in both forms mid-migration; a couple of routes and the requirements file still need cleanup.</span></li>
+          </ul>
+          <div class="try">
+            <div class="eyebrow"><span>Status · what's left</span><span>pre-launch</span></div>
+            <ul class="stat">
+              <li class="ok"><b>Working</b><span>Auth, dashboard, mentorship, jobs, admin, Gemini-backed skill assessment.</span></li>
+              <li class="todo"><b>In progress</b><span>Finish the Mongo migration and reconcile <code>requirements.txt</code>.</span></li>
+              <li class="todo"><b>Not started</b><span>Deployment.</span></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj snap">
+        <div>
+          <div class="kick"><span class="eyebrow">Team · college project</span><span class="eyebrow">Sep 2026 · work in progress</span></div>
+          <h3>VoiceGuard AI</h3>
+          <p class="role">Role: ML model developer</p>
+          <p class="sum">Real-time detection of voice-cloning scam calls, built for Smart India Hackathon 2026 (Problem Statement SIH26104, AICTE Cyber Security Cell). Three checks — fake-voice, speaker identity and multilingual scam intent — fuse into one explainable risk score with a downloadable forensic report.</p>
+          <div class="nums tnum">
+            <div><b>3</b><span>fused checks</span></div>
+            <div><b>4</b><span>API endpoints</span></div>
+            <div><b>6+</b><span>languages</span></div>
+            <div><b>20</b><span>tests</span></div>
+          </div>
+          <ul class="chips"><li>Python</li><li>FastAPI</li><li>Next.js</li><li>PyTorch</li><li>wav2vec2</li><li>ECAPA-TDNN</li><li>SpeechBrain</li></ul>
+          <div class="plinks">
+            <a class="btn solid" href="https://github.com/sohailakhtar01/voiceguardai" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>View on GitHub</a>
+          </div>
+        </div>
+        <div>
+          <ul class="feat">
+            <li><b>Fake-voice detection</b><span>wav2vec2 deepfake/AI-clone classifier, with a mock engine so the API runs without the ~2GB ML deps installed.</span></li>
+            <li><b>Speaker verification</b><span>ECAPA-TDNN voice embeddings checked against a trusted voiceprint registry.</span></li>
+            <li><b>Multilingual scam-intent detection</b><span>Speech-to-text and scam-word detection across Hindi, Tamil, Telugu, Kannada, Bengali, Marathi and code-mixed speech.</span></li>
+            <li><b>Explainable risk fusion</b><span>The three checks combine into one calibrated score (green→red) with reasons, not a black box — missing signals reweight fairly instead of being assumed.</span></li>
+            <li><b>Forensic reporting</b><span>Downloadable PDF/JSON case report with a SHA-256 audio hash for chain-of-custody.</span></li>
+            <li><b>Landing-page redesign</b><span>Rebuilt the dashboard into a full landing page (hero, feature grid, scam examples, FAQ) — currently reverted pending remerge.</span></li>
+          </ul>
+          <div class="try">
+            <div class="eyebrow"><span>Status · what's left</span><span>pre-launch</span></div>
+            <ul class="stat">
+              <li class="ok"><b>Working</b><span>Detection pipeline, risk fusion, PDF/JSON reports, 20-test suite.</span></li>
+              <li class="todo"><b>In progress</b><span>Re-merging the landing-page redesign; the real wav2vec2 model needs the ML deps installed (mock engine is the default).</span></li>
+              <li class="todo"><b>Not started</b><span>Deployment.</span></li>
+            </ul>
           </div>
         </div>
       </article>
